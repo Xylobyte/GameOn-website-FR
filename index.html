@@ -52,8 +52,8 @@
     <div class="bground toggle-modal">
         <div class="content">
             <span class="close toggle-modal"></span>
-            <div class="modal-body visible">
-                <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+            <div class="modal-body">
+                <form id="register-form" name="reserve" action="index.html" method="post" novalidate>
                     <div class="formData">
                         <label for="first">Prénom</label><br>
                         <input
@@ -172,12 +172,7 @@
                     </div>
 
                     <div class="formData">
-                        <input
-                                class="checkbox-input"
-                                type="checkbox"
-                                id="checkbox1"
-                                checked
-                        />
+                        <input class="checkbox-input" type="checkbox" id="checkbox1"/>
                         <label class="checkbox2-label" for="checkbox1">
                             <span class="checkbox-icon"></span>
                             J'ai lu et accepté les conditions d'utilisation.
@@ -203,6 +198,7 @@
                     Merci pour<br>
                     votre inscription
                 </p>
+                <button class="btn-close toggle-modal">Fermer</button>
             </div>
         </div>
     </div>

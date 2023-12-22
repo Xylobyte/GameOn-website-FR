@@ -210,6 +210,39 @@ main {
     margin: 15px auto;
 }
 
+.content-ok {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    background: #232323;
+    opacity: 0;
+    pointer-events: none;
+
+    &.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    p {
+        text-align: center;
+        font-size: 36px;
+
+        @media (max-width: 768px) {
+            font-size: 32px;
+        }
+    }
+
+    button {
+        position: absolute;
+        bottom: 20px;
+    }
+}
+
 label {
     font-family: var(--font-default);
     font-size: 17px;
@@ -236,12 +269,12 @@ input {
 
 .formData[data-error]::after {
     content: attr(data-error);
-    font-size: 0.4em;
+    font-size: 0.5em;
     color: #e54858;
     display: block;
     margin-top: 7px;
     margin-bottom: 7px;
-    text-align: right;
+    text-align: left;
     line-height: 0.3;
     opacity: 0;
     transition: 0.3s;
@@ -362,8 +395,7 @@ input[data-error]::after {
     transform: rotate(-45deg);
 }
 
-.btn-submit,
-.btn-signup {
+.btn-submit, .btn-signup, .btn-close {
     background: #fe142f;
     display: block;
     margin: 0 auto;
@@ -373,6 +405,10 @@ input[data-error]::after {
     color: #fff;
     cursor: pointer;
     border: 0;
+}
+
+.btn-submit {
+    margin-top: 20px;
 }
 
 /* custom select styles */
@@ -502,8 +538,7 @@ input[data-error]::after {
     text-transform: capitalize;
     font-size: 1.3rem;
     padding: 15px 23px;
-    margin: 0;
-    margin-top: 59px;
+    margin: 59px 0 0;
 }
 
 .hero-img {

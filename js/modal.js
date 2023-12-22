@@ -10,9 +10,10 @@ let saveTimer = null;
 // --------------------------
 
 const modalbg = document.querySelector(".bground");
+const contentOk = document.querySelector(".content-ok");
 const modalBtn = document.querySelectorAll(".toggle-modal");
 const formData = document.querySelectorAll(".formData");
-
+const registerForm = document.getElementById("register-form");
 
 // --------------------------
 // Register events
@@ -20,7 +21,7 @@ const formData = document.querySelectorAll(".formData");
 
 // Register events
 modalBtn.forEach(btn => btn.addEventListener("click", e => toggleModal(e, btn)));
-
+registerForm.addEventListener("submit", e => validate(e));
 
 // --------------------------
 // Onclick events functions
@@ -41,13 +42,13 @@ function toggleModal(e, btn) {
             modalbg.style.display = "none";
 
             if (saveTimer) clearInterval(saveTimer);
-
             saveForm();
-        }
-        else {
+            removeAllErrors();
+        } else {
             modalbg.style.display = "block";
-            getForm();
+            contentOk.classList.remove('visible');
 
+            getForm();
             saveTimer = setInterval(saveForm, 5000);
         }
 }

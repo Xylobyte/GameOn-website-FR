@@ -29,12 +29,12 @@ function saveForm() {
         }
     })
 
-    localStorage.setItem("formData", JSON.stringify(data));
+    window.localStorage.setItem("formData", JSON.stringify(data));
 }
 
 // Get uncompleted form in local storage
 function getForm() {
-    const data = JSON.parse(localStorage.getItem("formData"));
+    const data = JSON.parse(window.localStorage.getItem("formData"));
 
     if (data) {
         data.forEach(e => {
