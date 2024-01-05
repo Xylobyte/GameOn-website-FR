@@ -1,10 +1,12 @@
 // Validate form
 
-function validate(evt) {
+function validate(evt, el = null) {
     evt.preventDefault();
 
     let isOk = true;
     formData.forEach(data => {
+        if (el && data !== el) return;
+
         const input = data.querySelectorAll("input");
         const firstI = input[0];
 
@@ -29,6 +31,9 @@ function validate(evt) {
                     if (firstI.type === 'text') {
                         if (!firstI.value) {
                             addError(data, 'Veuillez entrer une valeur');
+                            isOk = false;
+                        } else if (/[^a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\-' ]/.test(firstI.value)) {
+                            addError(data, 'Veuillez entrer uniquement des lettres');
                             isOk = false;
                         } else if (firstI.value.length < 2) {
                             addError(data, 'Veuillez entrer 2 caractères ou plus');
@@ -68,7 +73,7 @@ function validate(evt) {
         }
     })
 
-    if (isOk) {
+    if (isOk && !el) {
         if (saveTimer) clearInterval(saveTimer);
         cleanInputs();
         contentOk.classList.add('visible');

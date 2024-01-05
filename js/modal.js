@@ -4,7 +4,6 @@
 
 let saveTimer = null;
 
-
 // --------------------------
 // Get DOM Elements
 // --------------------------
@@ -22,6 +21,9 @@ const registerForm = document.getElementById("register-form");
 // Register events
 modalBtn.forEach(btn => btn.addEventListener("click", e => toggleModal(e, btn)));
 registerForm.addEventListener("submit", e => validate(e));
+formData.forEach(el => el.querySelectorAll("input").forEach((input) =>
+    input.addEventListener("input", e => validate(e, el))
+));
 
 // --------------------------
 // Onclick events functions
