@@ -44,7 +44,7 @@ function validate(evt, el = null) {
                         } else removeError(data);
                     }
                     else if (firstI.type === 'email') {
-                        const re = /^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
+                        const re = /^[a-zA-Z0-9\.]{2,}@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
                         if (!firstI.value) {
                             addError(data, 'Veuillez entrer une valeur');
                             isOk = false;
